@@ -33,5 +33,12 @@ We can prove that one of the commitments is assigned to our nullifier, without r
 commitment在生成的时候用到了nullifier，不一样的nullifier生成不一样的commitment，所以commitment和nullifier是一一对应的
 commitment = hash(secret, nullifier)
 
+具体看电路的实现：
+两个文件：
+circuits/withdraw.circom
+circuits/merkleTree.circom
+
+
+——————————————————————————
 ref：
 https://betterprogramming.pub/understanding-zero-knowledge-proofs-through-the-source-code-of-tornado-cash-41d335c5475f
