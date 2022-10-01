@@ -52,9 +52,13 @@ abstract contract Tornado is MerkleTreeWithHistory, ReentrancyGuard {
     @dev Deposit funds into the contract. The caller must send (for ETH) or approve (for ERC20) value equal to or `denomination` of this instance.
     @param _commitment the note commitment, which is PedersenHash(nullifier + secret)
   */
+  // 一个tornado的合约只能存储一定金额，如果存储满了需要换一个
   function deposit(bytes32 _commitment) external payable nonReentrant {
     require(!commitments[_commitment], "The commitment has been submitted");
 
+    // 存储的时候根据_commitment生成一个index
+    // commitment是什么？
+    //commitment = PedersenHash(nullifier + secret)
     uint32 insertedIndex = _insert(_commitment);
     commitments[_commitment] = true;
     _processDeposit();
