@@ -32,6 +32,8 @@
 
 // 2019 OKIMS
 
+// 这个合约是由circom文件生成的
+
 pragma solidity ^0.7.0;
 
 library Pairing {

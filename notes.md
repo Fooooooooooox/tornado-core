@@ -38,6 +38,16 @@ commitment = hash(secret, nullifier)
 circuits/withdraw.circom
 circuits/merkleTree.circom
 
+电路的代码竟然很容易读懂（一直觉得电路听起来特别难）
+
+其实电路做的就是一件事：
+传入一条nullifier和secret计算hash，并加入其他需要的节点来组成一条merkle proof，证明这个节点在不在这个树里
+
+另外，这个snarkjs这个库会把circom文件自动转换成合约代码（verifier），从而验证过程可以通过合约来执行。
+
+现在看懂了电路是怎么实现取钱的，返回去看一下存钱的时候是如何操作的吧。
+
+contracts/Tornado.sol
 
 ——————————————————————————
 ref：

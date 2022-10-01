@@ -66,9 +66,11 @@ contract MerkleTreeWithHistory {
   }
 
 // index是如何计算的？
-// 传入
   function _insert(bytes32 _leaf) internal returns (uint32 index) {
+    // nextIndex是一个全局变量
     uint32 _nextIndex = nextIndex;
+    // 树满了就要新部署一个合约才能用了
+    // 为什么要乘以2？ 因为有左边和右边
     require(_nextIndex != uint32(2)**levels, "Merkle tree is full. No more leaves can be added");
     uint32 currentIndex = _nextIndex;
     bytes32 currentLevelHash = _leaf;

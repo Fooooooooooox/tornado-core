@@ -58,7 +58,9 @@ abstract contract Tornado is MerkleTreeWithHistory, ReentrancyGuard {
 
     // 存储的时候根据_commitment生成一个index
     // commitment是什么？
+    // 按照tc指定的规则生成：先生成两个随机数，然后用Pedersen hash生成_commitment
     //commitment = PedersenHash(nullifier + secret)
+    // 插入节点
     uint32 insertedIndex = _insert(_commitment);
     commitments[_commitment] = true;
     _processDeposit();
